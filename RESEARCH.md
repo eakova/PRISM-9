@@ -67,7 +67,7 @@ Each step requires explicit meta-reasoning:
 
 This transforms opaque "thinking" into auditable reasoning trails.
 
-→ **Full specification:** See [README.md](README.md)
+→ **Full specification:** See [PRISM-9.md](PRISM-9.md)
 
 ---
 

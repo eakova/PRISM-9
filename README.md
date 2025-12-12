@@ -131,8 +131,6 @@ PRISM-9 is open source and available under dual license:
 
 ## Contributing
 
-I'd love to hear what AI governance challenges you're facing. Open an issue or submit a PR!
+What industry are you in? I'd love to hear what AI governance challenges you're facing. Open an issue or submit a PR!
 
----
-
-**Tags:** `#AI` `#PromptEngineering` `#LLM` `#OpenSource` `#AIGovernance` `#EnterpriseAI`
+**Tags:** `#AI` `#PromptEngineering` `#LLM` `#OpenSource` `#AIGovernance` `#EnterpriseAI` `#Healthcare` `#LegalTech` `#FinTech` `#MarTech`

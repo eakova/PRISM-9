@@ -1,0 +1,128 @@
+<response_schema>
+    <description>
+        Standard response format for all pipeline stages.
+        Every stage MUST return output in this format.
+        All fields are REQUIRED to ensure predictable, parseable JSON output.
+    </description>
+    <schema>
+    {
+        "prompt_id": "stage-XX-name",
+        "status": "success | partial | failed",
+        "runtime_logs": {
+            "started_at": "ISO8601",
+            "completed_at": "ISO8601",
+            "duration_ms": 0,
+            "workflow_steps": ["COMPREHEND", "ANALYZE", "..."],
+            "decisions": [],
+            "assumptions": [],
+            "warnings": [],
+            "errors": [],
+            "validation": {
+                "passed": true,
+                "checks": [
+                    {"name": "", "passed": true, "message": ""}
+                ]
+            }
+        },
+        "sources_used": [
+            {
+                "url": "string - Full URL of the source",
+                "title": "string - Title or description of source",
+                "type": "search | fetch | api | cache",
+                "data_extracted": ["string - What information was taken from this source"]
+            }
+        ],
+        "meta_reasoning": {
+            "comprehend": "string - How the input was interpreted",
+            "analyze": "string - Key patterns and insights discovered",
+            "strategize": "string - Approach chosen and why",
+            "plan": "string - Action sequence created",
+            "execute": "string - What was done and decisions made",
+            "self_check": "string - Validation results and issues found",
+            "refine": "string - Improvements made without scope expansion",
+            "reconcile": "string - Handoff preparation and format verification",
+            "synthesize": "string - How findings were combined into coherent output",
+            "critical_choices": [
+                {
+                    "choice": "string - What was decided",
+                    "alternatives": ["string - Other options considered"],
+                    "rationale": "string - Why this choice was made"
+                }
+            ]
+        },
+        "executive_summary": {
+            "primary_finding": "string - The ONE most important discovery",
+            "key_insights": ["string - 3-5 critical takeaways"],
+            "confidence_level": "high | medium | low",
+            "confidence_rationale": "string - Why this confidence level"
+        },
+        "output": {
+            // Stage-specific data - schema defined per stage
+        },
+        "next_stage_guidance": {
+            "priority_areas": ["string - What the next stage should focus on"],
+            "watch_items": ["string - Potential issues to monitor"],
+            "data_quality_notes": ["string - Any caveats about the data provided"]
+        },
+        "handoff": {
+            "ready": true,
+            "next_stage": "stage-XX-name",
+            "missing_for_next": []
+        },
+        "extras": {
+            // Optional catch-all for any additional stage-specific data
+            // that doesn't fit the standard fields above.
+            // Use descriptive keys. Examples:
+            // "competitor_deep_dive": {...},
+            // "alternative_approaches": [...],
+            // "raw_search_results": [...],
+            // "methodology_notes": "..."
+        }
+    }
+    </schema>
+    <fields>
+        <field name="prompt_id" required="true">Unique identifier for the stage. Must match stage filename.</field>
+        <field name="status" required="true">Overall execution result. Values: success | partial | failed.</field>
+        <field name="runtime_logs" required="true">Execution trace. Captures timing, reasoning, validation.</field>
+        <field name="runtime_logs.started_at" required="true">ISO8601 timestamp when stage began.</field>
+        <field name="runtime_logs.completed_at" required="true">ISO8601 timestamp when stage finished.</field>
+        <field name="runtime_logs.duration_ms" required="false">Execution time in milliseconds.</field>
+        <field name="runtime_logs.workflow_steps" required="true">List of thinking-framework steps executed.</field>
+        <field name="runtime_logs.decisions" required="false">Key choices made during execution with reasoning.</field>
+        <field name="runtime_logs.assumptions" required="false">Assumptions made due to missing or ambiguous input.</field>
+        <field name="runtime_logs.warnings" required="false">Non-critical issues that did not block execution.</field>
+        <field name="runtime_logs.errors" required="false">Critical issues encountered.</field>
+        <field name="runtime_logs.validation" required="true">Gate check results: passed (bool) + checks array.</field>
+        <field name="sources_used" required="true">Array of all sources accessed during stage execution. Provides traceability for all data.</field>
+        <field name="sources_used[].url" required="true">Full URL of the source.</field>
+        <field name="sources_used[].title" required="true">Title or description of the source.</field>
+        <field name="sources_used[].type" required="true">How source was accessed: search | fetch | api | cache.</field>
+        <field name="sources_used[].data_extracted" required="true">List of what information was taken from this source.</field>
+        <field name="meta_reasoning" required="true">Structured reasoning trace showing how conclusions were reached. Maps to 9-step workflow.</field>
+        <field name="meta_reasoning.comprehend" required="true">Step 1: How the input was interpreted and understood.</field>
+        <field name="meta_reasoning.analyze" required="true">Step 2: Key patterns, insights, and analysis performed.</field>
+        <field name="meta_reasoning.strategize" required="true">Step 3: Approach chosen and reasoning behind the choice.</field>
+        <field name="meta_reasoning.plan" required="true">Step 4: Action sequence created with checkpoints.</field>
+        <field name="meta_reasoning.execute" required="true">Step 5: What was done and key decisions made during execution.</field>
+        <field name="meta_reasoning.self_check" required="true">Step 6: Validation results, issues found, and edge cases checked.</field>
+        <field name="meta_reasoning.refine" required="true">Step 7: Improvements made without expanding scope.</field>
+        <field name="meta_reasoning.reconcile" required="true">Step 8: Handoff preparation and format verification.</field>
+        <field name="meta_reasoning.synthesize" required="true">Step 9: How findings were combined into coherent output.</field>
+        <field name="meta_reasoning.critical_choices" required="true">Array of key decisions made with alternatives and rationale.</field>
+        <field name="executive_summary" required="true">High-level summary of stage results for quick review.</field>
+        <field name="executive_summary.primary_finding" required="true">The ONE most important discovery or result.</field>
+        <field name="executive_summary.key_insights" required="true">3-5 critical takeaways from the stage.</field>
+        <field name="executive_summary.confidence_level" required="true">Overall confidence: high | medium | low.</field>
+        <field name="executive_summary.confidence_rationale" required="true">Explanation of confidence level.</field>
+        <field name="output" required="true">Stage-specific deliverable data. Schema defined per stage.</field>
+        <field name="next_stage_guidance" required="true">Actionable guidance for the subsequent stage.</field>
+        <field name="next_stage_guidance.priority_areas" required="true">What the next stage should focus on first.</field>
+        <field name="next_stage_guidance.watch_items" required="true">Potential issues or risks to monitor.</field>
+        <field name="next_stage_guidance.data_quality_notes" required="true">Any caveats or limitations about provided data.</field>
+        <field name="handoff" required="true">Readiness indicator. Signals pass to next stage.</field>
+        <field name="handoff.ready" required="true">Boolean indicating if output is complete for next stage.</field>
+        <field name="handoff.next_stage" required="true">Identifier of the stage that should receive this output.</field>
+        <field name="handoff.missing_for_next" required="false">List of items required by next stage but not provided.</field>
+        <field name="extras" required="false">Optional catch-all object for any additional data not covered by standard fields. Use descriptive keys. Keeps schema predictable while allowing flexibility.</field>
+    </fields>
+</response_schema>

@@ -2,7 +2,7 @@
 
 ## An Open-Source Framework for Governed AI Reasoning
 
-After months of building complex AI pipelines, I kept hitting the same walls:
+After months of building complex AI pipelines, I kept hitting friction points that everyone in this space knows:
 
 - Hidden reasoning I couldn't audit
 - Rules getting "forgotten" mid-conversation
@@ -10,6 +10,12 @@ After months of building complex AI pipelines, I kept hitting the same walls:
 - Outputs I couldn't trace to sources
 - Pipeline stages that didn't communicate reliably
 - Hallucinated data slipping through undetected
+- No way to enforce constraints consistently
+- Inconsistent output formats breaking downstream processes
+- Self-checks that couldn't actually catch mistakes
+- No clear priority when instructions conflicted
+- Context limits forcing me to drop critical information
+- Hope-based validation instead of systematic verification
 
 That's how PRISM-9 evolved.
 
@@ -25,8 +31,8 @@ That's how PRISM-9 evolved.
 
 | Innovation | Description |
 |------------|-------------|
-| **The Laws Layer** | Inviolable rules that can't be overridden. No fabrication. No unverified claims. |
-| **9-Step Meta-Reasoning** | COMPREHEND, ANALYZE, STRATEGIZE, PLAN, EXECUTE, SELF_CHECK, REFINE, RECONCILE, SYNTHESIZE |
+| **The Laws Layer** | Rules designed to prevent fabrication and unverified claims. Guards against the most common failure modes. |
+| **9-Step Meta-Reasoning** | COMPREHEND (understand inputs), ANALYZE (map subproblems), STRATEGIZE (choose approach), PLAN (sequence actions), EXECUTE (do the work), SELF_CHECK (verify against criteria), REFINE (strengthen output), RECONCILE (resolve conflicts), SYNTHESIZE (deliver result) |
 | **Failure Recovery Loops** | Self-check fails? System automatically retries with a new approach. |
 | **Schema-Driven Handoffs** | Typed contracts between pipeline stages for reliable data flow. |
 | **Tiered Governance** | Laws > Hard Constraints > Soft Constraints > Preferences |
@@ -42,7 +48,7 @@ That's how PRISM-9 evolved.
 - Drug interaction checking with traceable sources
 - Protocol development with validation gates
 
-**Benefit:** Every medical claim traceable to source. Critical for YMYL compliance.
+**Benefit:** Requires citation checks for medical claims. Designed for YMYL compliance.
 
 ### Legal & Compliance
 
@@ -51,7 +57,7 @@ That's how PRISM-9 evolved.
 - Compliance audits with gap analysis
 - Policy drafting with regulatory review
 
-**Benefit:** Audit trails for every decision. Documentation regulators can follow.
+**Benefit:** Enforces audit logging for decisions. Produces documentation for regulatory review.
 
 ### Finance & Accounting
 
@@ -60,7 +66,7 @@ That's how PRISM-9 evolved.
 - Financial analysis with verifiable calculations
 - Budget planning with variance analysis
 
-**Benefit:** No hallucinated numbers. Every figure validated before delivery.
+**Benefit:** Adds numeric validation checks. Designed to catch hallucinated figures before delivery.
 
 ### Software & Technology
 
@@ -69,7 +75,7 @@ That's how PRISM-9 evolved.
 - Bug investigation with root cause analysis
 - Migration planning with impact assessment
 
-**Benefit:** Consistent code quality. Reproducible review processes.
+**Benefit:** Enforces schema-validated reviews. Designed for reproducible quality checks.
 
 ### Marketing & Content
 
@@ -78,7 +84,7 @@ That's how PRISM-9 evolved.
 - Campaign planning with data-driven strategy
 - Brand messaging with audience research
 
-**Benefit:** Content grounded in real data, not AI assumptions.
+**Benefit:** Requires source verification. Designed to ground content in real data.
 
 ### Research & Analysis
 
@@ -87,7 +93,7 @@ That's how PRISM-9 evolved.
 - Feasibility studies with risk assessment
 - User research with theme analysis
 
-**Benefit:** Confidence levels attached to every finding. Uncertainties documented.
+**Benefit:** Requires confidence calibration for findings. Enforces uncertainty documentation.
 
 ---
 
@@ -115,7 +121,7 @@ That's how PRISM-9 evolved.
 
 ## License
 
-PRISM-9 is open source and available under dual license:
+PRISM-9 is dual-licensed—choose either:
 
 - [MIT License](LICENSE-MIT)
 - [Apache 2.0 License](LICENSE-APACHE)

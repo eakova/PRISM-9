@@ -103,13 +103,13 @@ That's how PRISM-9 evolved.
 |-----------------------|---------|
 | "Hope it works" | "Verify it works" |
 
-### The 5 Laws
+### The 5 Laws (enforced via validation gates)
 
-1. Only state what's supported
-2. Verify before claiming
-3. Never fabricate data
-4. Respect all constraints
-5. Complete everything required
+1. Only state what's supported (cite the source)
+2. Verify before claiming (run the check, then speak)
+3. Block fabricated data (reject or flag anything without evidence)
+4. Respect all constraints (laws > hard > soft > preferences)
+5. Complete everything required (or return partial + errors if completion fails)
 
 ---
 

@@ -15,7 +15,7 @@ After months of building complex AI pipelines, I kept hitting friction points th
 - Self-checks that couldn't actually catch mistakes
 - No clear priority when instructions conflicted
 - Context limits forcing me to drop critical information
-- Hope-based validation instead of systematic verification
+- Hope-based validation instead of systematic verification (especially with complex tasks and large contexts)
 
 That's how PRISM-9 evolved.
 
